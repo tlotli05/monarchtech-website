@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monarch Technologies | IT Solutions & School Workshops</title>
+    <meta name="description" content="Professional IT services for businesses and technology education workshops for schools across South Africa.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Inline critical CSS -->
+    <style>
+        /* CRITICAL CSS - Loads immediately */
+        :root {
+            --primary-blue: #0A2463;
+            --dark-blue: #071A47;
+            --accent-blue: #3A86FF;
+            --light-blue: #E6F0FF;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F7;
+            --medium-gray: #8E8E93;
+            --dark-gray: #1D1D1F;
+            --border-color: #E0E0E0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --border-radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            text-align: center;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 25px auto 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 2px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-accent:hover {
+            background-color: #2A76FF;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: var(--light-gray);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.95)), url('hero-bg.jpg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 100px 0 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .hero .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .hero .btn-primary:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+
+        .hero .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .hero .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-blue);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--dark-blue);
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .service-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Workshops Section */
+        .workshops-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+        }
+
+        .workshops-section .section-title {
+            color: var(--white);
+        }
+
+        .workshops-section .section-title::after {
+            background: var(--accent-blue);
+        }
+
+        .workshops-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .workshop-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-blue);
+        }
+
+        .workshop-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .workshop-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        .workshop-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .workshop-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .workshop-cta {
+            margin-top: 40px;
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .workshop-cta h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .workshop-cta p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background-color: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-blue);
+        }
+
+        .pricing-image {
+            height: 180px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-blue);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-content {
+            padding: 25px;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .plan-price span {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 0 0 25px 0;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: var(--dark-gray);
+            position: relative;
+            padding-left: 28px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.95)), url('about-bg.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-gray);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-blue);
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--dark-blue);
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-text a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--dark-blue);
+            transition: var(--transition);
+        }
+
+        .social-link:hover svg {
+            fill: var(--white);
+        }
+
+        .contact-image {
+            height: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo img {
+            height: 35px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-contact i {
+            width: 16px;
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+            
+            .stat-item {
+                padding: 30px 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid, .workshop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .nav-links {
+                display: flex;
+                list-style: none;
+                gap: 30px;
+            }
+            
+            .nav-links a {
+                text-decoration: none;
+                color: var(--dark-blue);
+                font-weight: 600;
+                font-size: 1rem;
+                position: relative;
+                transition: var(--transition);
+                padding: 8px 0;
+            }
+            
+            .nav-links a:hover {
+                color: var(--accent-blue);
+            }
+            
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 3px;
+                background: var(--accent-blue);
+                bottom: 0;
+                left: 0;
+                transition: var(--transition);
+                border-radius: 2px;
+            }
+            
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+            
+            .services-grid, .workshop-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-container {
+                flex-direction: row;
+                gap: 60px;
+            }
+            
+            .contact-image {
+                height: 400px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 1023px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                box-shadow: var(--shadow-hover);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+                border-top: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+                list-style: none;
+            }
+            
+            .nav-links a {
+                text-decoration: none;
+                color: var(--dark-blue);
+                font-weight: 600;
+                font-size: 1.1rem;
+                padding: 10px 20px;
+                display: block;
+                border-radius: 8px;
+                transition: var(--transition);
+            }
+            
+            .nav-links a:hover {
+                background-color: var(--light-blue);
+                color: var(--accent-blue);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="logo.jpg" alt="Monarch Technologies" class="logo" width="160" height="40" loading="eager">
+                   
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#workshops">School Workshops</a></li>
+                    <li><a href="#pricing">IT Support Plans</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering South Africa Through Technology</h1>
+                <p>Professional IT solutions for businesses and transformative technology education for the next generation of innovators.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-laptop-code"></i> Business Services
+                    </a>
+                    <a href="#workshops" class="btn btn-secondary">
+                        <i class="fas fa-graduation-cap"></i> School Workshops
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Professionalism</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Schools Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Guarantee</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Students Educated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our IT Services</h2>
+            <p class="section-subtitle">Comprehensive technology solutions to keep your business running smoothly and securely</p>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- School Workshops Section -->
+    <section class="workshops-section" id="workshops">
+        <div class="container">
+            <h2 class="section-title">IT School Workshops</h2>
+            <p class="section-subtitle">Transformative technology education programs designed for primary and high schools</p>
+            
+            <div class="workshop-grid" id="workshopGrid">
+                <!-- Workshops populated by JavaScript -->
+            </div>
+            
+            <div class="workshop-cta">
+                <h3>Custom Workshop Packages for Your School</h3>
+                <p>We create tailored IT education programs that align with your school's curriculum and technology goals. Contact us for a customized quotation!</p>
+                <a href="#contact" class="btn btn-accent">
+                    <i class="fas fa-calendar-alt"></i> Request School Quotation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Support Monthly Services Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Managed IT Support Plans</h2>
+            <p class="section-subtitle">Predictable monthly pricing with enterprise-grade support for businesses</p>
+            
+            <div class="pricing-grid" id="pricingGrid">
+                <!-- Pricing cards populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <p class="about-text">Monarch Technologies provides reliable, affordable, and future-ready IT services for businesses while empowering the next generation through comprehensive technology education programs across South Africa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Contact us for business IT solutions or to discuss school workshop programs</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Business Email</h4>
+                                <a href="mailto:monarchtech25@gmail.com">monarchtech25@gmail.com</a>
+                                <p>For IT services, support plans, and business inquiries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Support Phone & WhatsApp</h4>
+                                <p>060 682 1708</p>
+                                <p><em>Available for both business support and school workshop inquiries</em></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Operating Hours</h4>
+                                <p><strong>Business Support:</strong> Mon-Fri: 8:00 AM - 7:00 PM</p>
+                                <p><strong>School Workshops:</strong> Flexible scheduling available</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/monarch_technologies25" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/share/14PAVDBLU5Q/" target="_blank" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-image">
+                    <img src="contact-bg.jpg" alt="Monarch Technologies Office" loading="lazy" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                
+                    <p>Empowering businesses with technology solutions and educating the next generation of innovators across South Africa.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Business Services</a></li>
+                        <li><a href="#workshops">School Workshops</a></li>
+                        <li><a href="#pricing">IT Support Plans</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> monarchtech25@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 060 682 1708</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri 8AM-6PM</p>
+                    <p><i class="fas fa-graduation-cap"></i> School Workshops Available</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">IT Support & Troubleshooting</a></li>
+                        <li><a href="#services">Website Development</a></li>
+                        <li><a href="#services">Network Setup & Security</a></li>
+                        <li><a href="#workshops">School IT Workshops</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Monarch Technologies. All rights reserved.website created by monarch Technologies (pty) Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Deferred Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- JavaScript -->
+    <script>
+        // Data for services
+        const servicesData = [
+            {
+                title: "IT Support & Troubleshooting",
+                description: "Fast support for devices, software, and networks. We respond quickly to resolve your IT issues with minimal disruption.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.94 12.21 22 12 22S11.59 21.94 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.06 11.79 2 12 2S12.41 2.06 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5M12 4.15L5 8.09V15.91L12 19.85L19 15.91V8.09L12 4.15Z"/></svg>`
+            },
+            {
+                title: "Website Development",
+                description: "Clean, fast, secure websites for small businesses. We create responsive websites that drive growth and engagement.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,18C11.17,18 10.5,17.33 10.5,16.5C10.5,15.67 11.17,15 12,15C12.83,15 13.5,15.67 13.5,16.5C13.5,17.33 12.83,18 12,18M18.75,10H5.25L12,4.75L18.75,10M17.62,10.35L12,5.5L6.38,10.35C6.15,10.54 6,10.83 6,11.14V19C6,19.5 6.5,20 7,20H17C17.5,20 18,19.5 18,19V11.14C18,10.83 17.85,10.54 17.62,10.35Z"/></svg>`
+            },
+            {
+                title: "Network Setup & Security",
+                description: "Routers, switches, WiFi, security hardening. We build secure, reliable networks that protect your business data.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M17.13,17C15.92,18.85 14.11,20.24 12,20.92C9.89,20.24 8.08,18.85 6.87,17C6.53,16.5 6.24,16 6,15.47C6,13.82 8.71,12.47 12,12.47C15.29,12.47 18,13.79 18,15.47C17.76,16 17.47,16.5 17.13,17Z"/></svg>`
+            },
+            {
+                title: "Cloud & Email Services",
+                description: "Microsoft 365, business email, cloud backups. We migrate and manage your cloud infrastructure for optimal performance.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6,19A5,5 0 0,1 1,14A5,5 0 0,1 6,9C7,6.65 9.3,5 12,5C15.43,5 18.24,7.66 18.5,11.03L19,11A4,4 0 0,1 23,15A4,4 0 0,1 19,19H6Z"/></svg>`
+            },
+            {
+                title: "Hardware & Software Repairs",
+                description: "Device repairs, OS installations, upgrades. We fix hardware issues and keep your software updated and secure.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10,4L12,6H20A2,2 0 0,1 22,8V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10M15,9V12H12V14H15V17H17V14H20V12H17V9H15Z"/></svg>`
+            },
+            {
+                title: "Cybersecurity Solutions",
+                description: "Protection against malware, phishing, and security threats. We implement multi-layered security to safeguard your business.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11C15.4,11 16,11.6 16,12.3V15.8C16,16.4 15.4,17 14.7,17H9.2C8.6,17 8,16.4 8,15.7V12.2C8,11.6 8.6,11 9.2,11V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z"/></svg>`
+            }
+        ];
+
+        // Data for school workshops
+        const workshopsData = [
+            {
+                title: "Introduction to Programming",
+                description: "Hands-on coding workshops where students learn programming fundamentals through fun, interactive projects.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,18C21.1,18 22,18.9 22,20V22H2V20C2,18.9 2.9,18 4,18H8V14H16V18H20M7,1C8.66,1 10,2.34 10,4C10,5.66 8.66,7 7,7C5.34,7 4,5.66 4,4C4,2.34 5.34,1 7,1M17,1C18.66,1 20,2.34 20,4C20,5.66 18.66,7 17,7C15.34,7 14,5.66 14,4C14,2.34 15.34,1 17,1M7,9C9.21,9 11,10.79 11,13V14H3V13C3,10.79 4.79,9 7,9M17,9C19.21,9 21,10.79 21,13V14H13V13C13,10.79 14.79,9 17,9Z"/></svg>`
+            },
+            {
+                title: "Robotics & Automation",
+                description: "we give education on robots with fun interactive projects, learning engineering concepts and automation principles.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/></svg>`
+            },
+            {
+                title: "Cybersecurity Awareness",
+                description: "Teach students about online safety, password security, and how this field is growing.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M17.13,17C15.92,18.85 14.11,20.24 12,20.92C9.89,20.24 8.08,18.85 6.87,17C6.53,16.5 6.24,16 6,15.47C6,13.82 8.71,12.47 12,12.47C15.29,12.47 18,13.79 18,15.47C17.76,16 17.47,16.5 17.13,17Z"/></svg>`
+            },
+            {
+                title: "IT Career Guidance",
+                description: "Interactive sessions about technology careers, university pathways, and job opportunities.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/></svg>`
+            },
+            {
+                title: "Web Development Projects",
+                description: "get to show students how a website is created, introducing them to HTML, CSS, and JavaScript with practical projects.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,18C11.17,18 10.5,17.33 10.5,16.5C10.5,15.67 11.17,15 12,15C12.83,15 13.5,15.67 13.5,16.5C13.5,17.33 12.83,18 12,18M18.75,10H5.25L12,4.75L18.75,10M17.62,10.35L12,5.5L6.38,10.35C6.15,10.54 6,10.83 6,11.14V19C6,19.5 6.5,20 7,20H17C17.5,20 18,19.5 18,19V11.14C18,10.83 17.85,10.54 17.62,10.35Z"/></svg>`
+            },
+            {
+                title: "emphasizing fun Engagement",
+                description: "learn,Play and explore:hands-on IT workshop with exciting games.",
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6,7H18A5,5 0 0,1 23,12A5,5 0 0,1 18,17C16.36,17 14.91,16.21 14,15H10C9.09,16.21 7.64,17 6,17A5,5 0 0,1 1,12A5,5 0 0,1 6,7M19.75,9.5A1.25,1.25 0 0,0 18.5,10.75A1.25,1.25 0 0,0 19.75,12A1.25,1.25 0 0,0 21,10.75A1.25,1.25 0 0,0 19.75,9.5M17.25,12A1.25,1.25 0 0,0 16,13.25A1.25,1.25 0 0,0 17.25,14.5A1.25,1.25 0 0,0 18.5,13.25A1.25,1.25 0 0,0 17.25,12M5,9V11H3V13H5V15H7V13H9V11H7V9H5Z"/></svg>`
+            }
+        ];
+
+        // Data for pricing plans
+        const pricingData = [
+            {
+                name: "Essential Plan",
+                price: "R999,99",
+                period: "/month",
+                badge: "Popular",
+                features: [
+                    "Password and account",
+                    "Software updates & security patches",
+                    "Antivirus & malware protection",
+                    "Email support (24-hour response)",
+                    "Monthly system health reports",
+                    "Basic network and pc's troubleshooting"
+                ],
+                image: "plan-basic.jpg"
+            },
+            {
+                name: "Standard Plan",
+                price: "R1,999",
+                period: "/month",
+                badge: "Recommended",
+                features: [
+                    "Everything in Essential Plan",
+                    "On-site support (4 visits/month)",
+                    "Automated cloud backups",
+                    "24/7 network monitoring",
+                    "Priority support (2-hour response)",
+                    "Quarterly security audits",
+                    "Microsoft 365 management"
+                ],
+                image: "plan-business.jpg"
+            },
+            {
+                name: "Enterprise Plan",
+                price: "R4,999",
+                period: "/month",
+                badge: "Full Management",
+                features: [
+                    "Everything in Business Plan",
+                    "Full IT infrastructure management",
+                    "Unlimited on-site support",
+                    "Advanced system Hardening ",
+                    "Custom Security Configurations",
+                    "24/7 emergency support line",
+                    "Annual IT strategy planning"
+                ],
+                image: "plan-enterprise.jpg"
+            }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate services
+            const servicesGrid = document.getElementById('servicesGrid');
+            servicesData.forEach((service, index) => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card fade-in';
+                serviceCard.style.animationDelay = `${index * 0.1}s`;
+                serviceCard.innerHTML = `
+                    <div class="service-icon">${service.icon}</div>
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                    <a href="#contact" class="service-link">
+                        Get Support <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+                servicesGrid.appendChild(serviceCard);
+            });
+
+            // Populate workshops
+            const workshopGrid = document.getElementById('workshopGrid');
+            workshopsData.forEach((workshop, index) => {
+                const workshopCard = document.createElement('div');
+                workshopCard.className = 'workshop-card fade-in';
+                workshopCard.style.animationDelay = `${index * 0.1}s`;
+                workshopCard.innerHTML = `
+                    <div class="workshop-icon">${workshop.icon}</div>
+                    <h3>${workshop.title}</h3>
+                    <p>${workshop.description}</p>
+                    <a href="#contact" class="service-link" style="color: var(--accent-blue);">
+                        Inquire Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+                workshopGrid.appendChild(workshopCard);
+            });
+
+            // Populate pricing cards
+            const pricingGrid = document.getElementById('pricingGrid');
+            pricingData.forEach((plan, index) => {
+                const pricingCard = document.createElement('div');
+                pricingCard.className = 'pricing-card fade-in';
+                pricingCard.style.animationDelay = `${index * 0.1}s`;
+                pricingCard.innerHTML = `
+                    <div class="pricing-image" style="background-image: url('${plan.image}')">
+                        <div class="pricing-badge">${plan.badge}</div>
+                    </div>
+                    <div class="pricing-content">
+                        <h3 class="plan-name">${plan.name}</h3>
+                        <div class="plan-price">${plan.price}<span>${plan.period}</span></div>
+                        <ul class="plan-features">
+                            ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">
+                            <i class="fas fa-calendar-check"></i> Get Started
+                        </a>
+                    </div>
+                `;
+                pricingGrid.appendChild(pricingCard);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 1024) {
+                        navLinks.classList.remove('active');
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+
+            // Animate elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .pricing-card, .workshop-card, .about-content, .contact-info, .contact-image, .stat-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
